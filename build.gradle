@@ -1,19 +1,25 @@
-plugins {
-    id 'java'
-}
 
-group = 'org.example'
-version = '1.0-SNAPSHOT'
+allprojects {
+    group = 'org.example'
+    version = '1.0-SNAPSHOT'
+}
 
 repositories {
     mavenCentral()
 }
+subprojects {
+    apply plugin: 'java'
 
-dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-}
+    repositories {
+        mavenCentral()
+    }
 
-test {
-    useJUnitPlatform()
+    dependencies {
+        testImplementation platform('org.junit:junit-bom:5.10.0')
+        testImplementation 'org.junit.jupiter:junit-jupiter'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
 }
