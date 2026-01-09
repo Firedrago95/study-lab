@@ -8,6 +8,10 @@ public class ContextSwitchTest {
     10_000_000번 부동소수점 연산 실험 결과
     단일 스레드 소요시간: 561ms
     8개 스레드 소요 시간: 18ms
+
+    10000000번 부동소수점 연산 실험 결과
+    단일 스레드 소요시간: 553ms
+    50000개 스레드 소요 시간: 1386ms (스레드 컨텍스트 스위칭 비용 증가)
      */
     public static void main(String[] args) throws InterruptedException {
         long totalIncrements = 10_000_000L; // 10억
@@ -27,7 +31,7 @@ public class ContextSwitchTest {
         System.out.println("단일 스레드 소요시간: " + (System.currentTimeMillis() - start) + "ms");
 
         // 2. 수많은 스레드가 나눠서 작업 (8개 스레드가 분담)
-        int threadCount = 8;
+        int threadCount = 50000;
         Thread[] threads = new Thread[threadCount];
         long incrementsPerThread = totalIncrements / threadCount;
 
